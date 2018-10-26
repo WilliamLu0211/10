@@ -33,6 +33,8 @@ int random_int(){
 int main(){
   // printf("%x\n", random_int());
 
+  int fd, n;
+
   int arr[10];
   printf("Generating random numbers:\n");
   for (int i = 0; i < 10; i ++){
@@ -41,14 +43,14 @@ int main(){
   }
   printf("\n");
 
-  int fd = open("new_file.txt", O_WRONLY | O_CREAT, 0777);
+  fd = open("new_file.txt", O_WRONLY | O_CREAT, 0777);
   if (!(fd + 1)){
     printf("open failed: %s\n", strerror(errno));
     return 0;
   }
 
   printf("Writing numbers to file...\n\n");
-  int n = write(fd, arr, 40);
+  n = write(fd, arr, 40);
   if (!(n + 1)){
 
     printf("write failed: %s\n", strerror(errno));
